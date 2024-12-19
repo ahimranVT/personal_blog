@@ -15,8 +15,8 @@ export default function AboutPage() {
         </header>
 
         {/* Mission Statement */}
-        <section className="mb-16">
-          <div className="bg-white z-10 dark:bg-gray-800 rounded-2xl shadow-xl p-8 transform hover:scale-[1.02] transition-transform duration-300">
+        <section className="mb-16 z">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 transform hover:scale-[1.02] transition-transform duration-300">
             <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">
               Our Mission
             </h2>
@@ -54,8 +54,9 @@ export default function AboutPage() {
                   CEO & Founder
                 </p>
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  Abdul Hadi Imran is a Master of Engineering Management student at Purdue University, with a background in 
-                  AI, Databases, and Data Engineering
+                  Abdul Hadi Imran is a Master of Engineering Management student
+                  at Purdue University, with a background in AI, Databases, and
+                  Data Engineering
                 </p>
               </div>
             </div>

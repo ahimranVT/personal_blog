@@ -51,12 +51,6 @@ export default function Navbar() {
               >
                 Blog
               </Link>
-              <Link
-                href="/contact"
-                className="text-gray-700 dark:text-gray-300 hover:scale-110 hover:font-semibold px-3 py-2 rounded-md text-sm font-medium transition-colors"
-              >
-                Contact
-              </Link>
               <ModeToggle />
             </div>
           </div>
@@ -89,7 +83,6 @@ export default function Navbar() {
                       <Link href="/">Home</Link>
                       <Link href="/about">About</Link>
                       <Link href="/blog">Blog</Link>
-                      <Link href="/contact">Contact</Link>
                     </div>
                   </SheetDescription>
                 </SheetHeader>

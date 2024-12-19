@@ -1,7 +1,123 @@
 import Image from "next/image";
+import Link from "next/link";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 
 export default function Home() {
+  const featuredBlogsPath = path.join(
+    process.cwd(),
+    "app/content/featured-blogs"
+  );
+  const featuredBlogs = fs
+    .readdirSync(featuredBlogsPath)
+    .filter((filename) => filename.endsWith(".md"))
+    .map((filename) => {
+      const filePath = path.join(featuredBlogsPath, filename);
+      const fileContent = fs.readFileSync(filePath, "utf8");
+      const { data } = matter(fileContent);
+      return {
+        ...data,
+        slug: data.slug,
+      };
+    });
+
   return (
-    <div>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est consequatur possimus itaque enim incidunt, in distinctio corporis quo ad repudiandae rem, voluptatem ipsam? Sit optio molestiae consequatur magni dolore? Expedita blanditiis dicta repellendus aperiam quisquam tempore corrupti laudantium tenetur quas, odio sed sit repudiandae maiores? Reprehenderit quam optio, odit provident maxime aut accusantium necessitatibus magnam tempore amet non consectetur praesentium sit nihil, iusto sunt quasi itaque eligendi. Sunt, totam fuga corrupti culpa quis excepturi debitis fugit sequi? Dolore quae, earum autem aliquid saepe, obcaecati voluptas, nesciunt similique a possimus ipsum quia non illum sed? Labore veniam aperiam dolor omnis deleniti, dicta, at autem possimus, ad hic blanditiis reprehenderit pariatur rerum sunt earum illum magnam facere quod consequuntur quis quos porro. Impedit libero dolore ratione voluptas aperiam? Obcaecati sapiente odit voluptatem debitis nemo accusamus sed, atque assumenda maiores consequatur, commodi expedita adipisci tempore doloremque minus necessitatibus! Excepturi aperiam iure vitae obcaecati inventore ducimus, sunt quae maiores quasi assumenda! Adipisci consequatur reiciendis voluptas ullam minima quisquam nam hic atque expedita laborum iste ad blanditiis fugit tenetur voluptatem repellat, vitae earum consectetur. Nesciunt quo eius aut odit illum delectus adipisci similique doloribus architecto at expedita autem, tenetur laboriosam ea quibusdam porro ex cum quas ullam ipsam suscipit animi. Sunt id tempore architecto porro commodi, exercitationem aperiam explicabo, reiciendis officia repellat, magni soluta vero dicta. Hic quod debitis maxime quo, ea sit atque est. Nobis, fugiat. Quisquam quo eos corrupti soluta ipsum illum necessitatibus veritatis distinctio sint, molestiae omnis reprehenderit voluptatibus. Nostrum, a perferendis eveniet perspiciatis eius voluptatem recusandae aspernatur rerum esse laudantium laborum consequatur nemo iure labore molestias autem omnis, nesciunt ratione culpa quia error? Accusantium atque veritatis ea ducimus repudiandae, vero similique, placeat distinctio optio sed excepturi eius iste eligendi fugiat doloremque laboriosam! Officiis, eaque veritatis! Nostrum, odio dolore qui eaque velit nihil itaque aliquam? Laudantium explicabo ab deleniti quibusdam. Cum iusto voluptatem explicabo qui ad itaque aut. Ex nihil inventore voluptatem vel minus iste, esse blanditiis minima modi ullam atque deleniti illum nulla, suscipit molestias dignissimos neque, magnam tempore magni architecto excepturi. Repellendus, quod iure nesciunt assumenda a corrupti maiores in impedit voluptatem at dolores, adipisci velit laudantium minima magni distinctio non qui pariatur. Quod assumenda impedit quibusdam cumque facilis eaque, sapiente aut, repellat voluptatum tenetur debitis accusantium dolore soluta temporibus! Cumque officia deserunt obcaecati explicabo ut minima similique omnis hic molestiae animi perspiciatis debitis quibusdam quisquam excepturi, corrupti iusto ipsum officiis! Pariatur eveniet perspiciatis, totam odit, temporibus possimus autem, facere consequatur ullam dignissimos iste libero explicabo error. Modi inventore quae doloribus quas architecto porro similique? Saepe, debitis! Eos dignissimos eveniet delectus quos enim maxime voluptatibus, inventore reprehenderit? Illum, et est modi reiciendis quaerat reprehenderit possimus, vitae repellat eligendi, consectetur veritatis. Blanditiis dignissimos tempora iusto explicabo ab, vero magnam voluptate itaque corporis sunt a totam deserunt doloremque nemo neque. Aut eos officiis nulla obcaecati assumenda repellat voluptas reprehenderit illo ratione eum magni mollitia vel laudantium est, vitae natus iste temporibus aliquam perferendis. Porro praesentium culpa fugit, nisi quo dolorem magni illum doloribus. Debitis incidunt veniam doloribus voluptatibus error neque magnam eveniet. Alias eveniet nesciunt ullam quod sit sequi officiis omnis maxime modi. Repellendus voluptas nam totam ad quam temporibus maiores aut tempora non? Odio libero adipisci tempora nemo repellendus illo deserunt quasi explicabo praesentium, laudantium, at veniam quam cumque reiciendis dolorem sequi culpa? Velit nobis eius asperiores ullam hic, cum iure maiores voluptate dignissimos atque impedit eum facilis officiis distinctio odit delectus voluptatum. Modi placeat officia eum deleniti labore libero nam veritatis quibusdam voluptatum. Numquam inventore aperiam vero reiciendis exercitationem est minus sit, molestias, cum, labore mollitia unde quibusdam eaque deleniti sapiente dicta consequatur nobis nam? Placeat explicabo, exercitationem tempora, iure praesentium animi reiciendis voluptatum dolorum earum facere omnis? Nam, nobis. Eos, nesciunt voluptatum repudiandae error odit minus autem consequatur cum. Voluptatibus quibusdam minus excepturi illum. Iusto veniam magnam voluptate ipsam, exercitationem suscipit dolor perspiciatis autem veritatis corrupti dolorem praesentium, magni ad sunt! Accusantium exercitationem molestiae perspiciatis ex amet id reiciendis aperiam magnam quis corporis repellat adipisci libero consequatur, debitis sint illo at voluptatem pariatur ut culpa temporibus omnis facere. Laudantium at enim asperiores minus repudiandae non, vero placeat vel consequuntur illum ipsum tempore sapiente tempora nesciunt amet praesentium impedit voluptatem molestiae nemo dolor! Ipsum enim provident dignissimos nobis similique ratione nam quam esse ab praesentium amet eius obcaecati, incidunt rerum commodi aut optio magnam quis aliquid facere fugiat aliquam magni repellat exercitationem. Iusto harum consequuntur beatae rerum fuga voluptatum nulla, earum deleniti debitis eum qui provident dolore aliquid vero blanditiis ab. Eveniet nam, atque quis, necessitatibus similique quod, iste unde accusamus veniam blanditiis vitae voluptas! Amet ea odit magni, corporis, quod ipsum eius vel quasi soluta enim sint eaque. Sequi incidunt dignissimos necessitatibus esse illum dolorum excepturi voluptatem aut! Sapiente itaque labore aperiam autem possimus obcaecati dolore voluptatibus corrupti atque. Aperiam, repellat optio eum officiis perferendis esse suscipit magnam possimus illum laudantium odit doloremque iure tenetur quisquam non. Ex, consequuntur quae molestiae rerum quibusdam vero nobis nesciunt velit architecto sint nemo asperiores doloribus id ipsum qui quis quaerat, distinctio facilis aut. Earum, nulla hic sint, accusantium consequuntur esse vel minus, corrupti tenetur eos mollitia est quaerat ipsam rem voluptas ratione ducimus deserunt asperiores distinctio fugiat. Similique ipsa fugit, assumenda, vero temporibus laborum aspernatur quaerat odit, asperiores officia at cum atque molestias! Magnam cum ipsa vel, cupiditate, natus necessitatibus nobis repellendus assumenda expedita, aliquam sapiente laudantium consequuntur? Eveniet facere itaque nesciunt doloribus ullam, sint voluptatem repellendus asperiores, laborum assumenda beatae commodi voluptas quisquam molestias deleniti sunt esse, nemo ipsam. Totam nihil aliquid repellat labore ullam vitae aliquam, explicabo accusantium debitis inventore libero illum nam modi asperiores facilis at omnis dolores non reiciendis est sunt. Corrupti quibusdam fugiat suscipit deleniti illum eveniet minus quas facere in ea? Ipsa deserunt numquam iure facere aut fuga, aspernatur atque odit ratione quos ducimus a iusto, distinctio, sapiente at illo necessitatibus laborum quia autem nam. Vitae error alias aliquam. Placeat quo, dicta rem excepturi tenetur, provident libero in possimus, repellendus veritatis distinctio error? Dolor, eius?</div>
-  )
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <div className="relative h-[70vh] bg-gradient-to-r from-indigo-600 to-purple-600">
+        <div className="absolute inset-0 bg-black opacity-50"></div>
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center px-4">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6">
+            Welcome to Imran Academy
+          </h1>
+          <p className="text-xl md:text-2xl mb-8 max-w-2xl">
+            Tired of explanations that don't make sense? Want to learn tech the
+            easy way? We got you!
+          </p>
+          <Link
+            href="/blog"
+            className="bg-white text-indigo-600 px-8 py-3 rounded-full font-semibold hover:bg-opacity-90 transition"
+          >
+            Where can I start learning?
+          </Link>
+        </div>
+      </div>
+
+      {/* Featured Categories */}
+      <div className="max-w-7xl mx-auto py-16 px-4">
+        <h2 className="text-3xl font-bold text-center mb-12">Featured Blogs</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {featuredBlogs.length > 0
+            ? featuredBlogs.map((blog, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition"
+                >
+                  <div
+                    className={`h-48 bg-${
+                      blog.color || "gray"
+                    }-100 rounded-lg mb-4 flex items-center justify-center`}
+                  >
+                    <svg
+                      className={`w-20 h-20 text-${blog.color || "gray"}-500`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d={
+                          blog.icon ||
+                          "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                        }
+                      />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">{blog.title}</h3>
+                  <p className="text-gray-600 mb-4">{blog.description}</p>
+                  {blog.slug && (
+                    <Link
+                      href={`/blog/${blog.slug}`}
+                      className={`text-${
+                        blog.color || "gray"
+                      }-600 font-medium hover:text-${blog.color || "gray"}-500`}
+                    >
+                      {blog.linkText || "Read More"} →
+                    </Link>
+                  )}
+                </div>
+              ))
+            : null}
+
+          {[...Array(3 - (featuredBlogs?.length || 0))].map((_, index) => (
+            <div
+              key={`placeholder-${index}`}
+              className="bg-white rounded-lg shadow-md p-6"
+            >
+              <div className="h-48 bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
+                <svg
+                  className="w-20 h-20 text-gray-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                  />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Coming soon...</h3>
+              <p className="text-gray-600 mb-4">New content is on the way</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 }
