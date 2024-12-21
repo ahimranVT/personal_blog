@@ -1,7 +1,7 @@
 ---
 title: Test Tutorial 1
 description: This is JavaScript tutorial and this is for learning JavaScript
-slug: ai/content/test-tutorial-1
+slug: featured-test-tutorial-1
 date: 02/03/2025
 author: Hadi
 image: /typescript.webp

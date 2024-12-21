@@ -1,7 +1,7 @@
 ---
 title: Test Tutorial 2 
 description: This is JavaScript tutorial and this is for learning JavaScript
-slug: content/test-tutorial-2
+slug: test-tutorial-2
 date: 08/02/2025
 author: Hadi
 image: https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1

@@ -80,7 +80,7 @@ export default function Home() {
                   <p className="text-gray-600 mb-4">{blog.description}</p>
                   {blog.slug && (
                     <Link
-                      href={`/blog/${blog.slug}`}
+                      href={`/blog/content/featured-blogs/${blog.slug}`}
                       className={`text-${
                         blog.color || "gray"
                       }-600 font-medium hover:text-${blog.color || "gray"}-500`}
