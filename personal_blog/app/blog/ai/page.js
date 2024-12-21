@@ -121,7 +121,7 @@ const page = () => {
 
               {/* Link to the full blog post */}
               <Link
-                href={`/blog/ai/${blog.slug}`}
+                href={`/blog/content/ai/${blog.slug}`}
                 className={`text-${
                   blog.color || "gray"
                 }-600 font-medium hover:text-${blog.color || "gray"}-500`}
