@@ -23,7 +23,7 @@ export default function Home() {
     });
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       {/* Hero Section */}
       <div className="relative h-[70vh] bg-gradient-to-r from-indigo-600 to-purple-600">
         <div className="absolute inset-0 bg-black opacity-50"></div>
@@ -46,21 +46,23 @@ export default function Home() {
 
       {/* Featured Categories */}
       <div className="max-w-7xl mx-auto py-16 px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">Featured Blogs</h2>
+        <h2 className="text-3xl font-bold text-center mb-12 ">Featured Blogs</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {featuredBlogs.length > 0
             ? featuredBlogs.map((blog, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition"
+                  className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:scale-[1.02] transition-transform duration-300"
                 >
                   <div
                     className={`h-48 bg-${
                       blog.color || "gray"
-                    }-100 rounded-lg mb-4 flex items-center justify-center`}
+                    }-100 dark:bg-gray-700 rounded-lg mb-4 flex items-center justify-center`}
                   >
                     <svg
-                      className={`w-20 h-20 text-${blog.color || "gray"}-500`}
+                      className={`w-20 h-20 text-${
+                        blog.color || "gray"
+                      }-500 dark:text-gray-400`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -76,14 +78,20 @@ export default function Home() {
                       />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">{blog.title}</h3>
-                  <p className="text-gray-600 mb-4">{blog.description}</p>
+                  <h3 className="text-xl font-semibold mb-2 dark:text-white">
+                    {blog.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">
+                    {blog.description}
+                  </p>
                   {blog.slug && (
                     <Link
                       href={`/blog/${blog.slug}`}
                       className={`text-${
                         blog.color || "gray"
-                      }-600 font-medium hover:text-${blog.color || "gray"}-500`}
+                      }-600 dark:text-gray-300 font-medium hover:text-${
+                        blog.color || "gray"
+                      }-500 dark:hover:text-gray-100`}
                     >
                       {blog.linkText || "Read More"} →
                     </Link>
@@ -95,11 +103,11 @@ export default function Home() {
           {[...Array(3 - (featuredBlogs?.length || 0))].map((_, index) => (
             <div
               key={`placeholder-${index}`}
-              className="bg-white rounded-lg shadow-md p-6"
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 hover:scale-[1.02] transition-transform duration-300"
             >
-              <div className="h-48 bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
+              <div className="h-48 bg-gray-100 dark:bg-gray-700 rounded-lg mb-4 flex items-center justify-center">
                 <svg
-                  className="w-20 h-20 text-gray-500"
+                  className="w-20 h-20 text-gray-500 dark:text-gray-400"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -112,8 +120,12 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Coming soon...</h3>
-              <p className="text-gray-600 mb-4">New content is on the way</p>
+              <h3 className="text-xl font-semibold mb-2 dark:text-white">
+                Coming soon...
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
+                New content is on the way
+              </p>
             </div>
           ))}
         </div>

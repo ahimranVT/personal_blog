@@ -33,7 +33,7 @@ const BlogCategories = () => {
   ];
 
   return (
-    <section className="py-12 px-4">
+    <section className="py-12 px-4 bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       <h2 className="text-3xl font-bold text-center mb-12">
         Get Started with...
       </h2>
@@ -45,7 +45,7 @@ const BlogCategories = () => {
             className="group block"
           >
             <div
-              className="bg-card hover:bg-card/80 rounded-lg p-6 h-full
+              className="bg-card dark:bg-gray-800 hover:bg-card/80 rounded-lg p-6 h-full
                         transform transition-all duration-300 ease-in-out
                         hover:-translate-y-2 hover:shadow-xl
                         border border-border"
