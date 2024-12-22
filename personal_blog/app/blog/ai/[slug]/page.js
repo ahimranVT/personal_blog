@@ -14,8 +14,22 @@ import rehypeSlug from "rehype-slug";
 
 export default async function Page({ params }) {
   // Use process.cwd() to get the root directory of the project
-  const filepath = path.join(process.cwd(), "content", "ai", `${params.slug}.md`);
+  const filepath = path.join(
+    process.cwd(),
+    "app",
+    "content",
+    "ai",
+    `${params.slug}.md`
+  );
+
+  console.log("Current working directory:", process.cwd());
   console.log("Attempting to read file at:", filepath);
+  try {
+    const exists = fs.existsSync(filepath);
+    console.log("File exists:", exists);
+  } catch (error) {
+    console.error("Error checking file:", error);
+  }
 
   try {
     if (!fs.existsSync(filepath)) {
