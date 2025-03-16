@@ -11,9 +11,12 @@ import { unified } from "unified";
 import OnThisPage from "@/components/onthispage";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
+import rehypeKatex from "rehype-katex";
+import remarkMath from "remark-math";
+import remarkGfm from "remark-gfm";
+import rehypeHighlight from "rehype-highlight";
 
 export default async function Page({ params }) {
-  // Use process.cwd() to get the root directory of the project
   const filepath = path.join(
     process.cwd(),
     "app",
@@ -21,15 +24,6 @@ export default async function Page({ params }) {
     "ai",
     `${params.slug}.md`
   );
-
-  console.log("Current working directory:", process.cwd());
-  console.log("Attempting to read file at:", filepath);
-  try {
-    const exists = fs.existsSync(filepath);
-    console.log("File exists:", exists);
-  } catch (error) {
-    console.error("Error checking file:", error);
-  }
 
   try {
     if (!fs.existsSync(filepath)) {
@@ -43,12 +37,15 @@ export default async function Page({ params }) {
 
     const processor = unified()
       .use(remarkParse)
-      .use(remarkRehype)
-      .use(rehypeDocument, { title: "👋🌍" })
+      .use(remarkMath) // Add support for LaTeX math
+      .use(remarkGfm) // Add support for GitHub Flavored Markdown (tables, etc.)
+      .use(remarkRehype, { allowDangerousHtml: true })
+      .use(rehypeKatex) // Process LaTeX equations
+      .use(rehypeSlug) // Add IDs to headings
+      .use(rehypeAutolinkHeadings) // Add links to headings
+      .use(rehypeHighlight) // Add syntax highlighting for code blocks
       .use(rehypeFormat)
-      .use(rehypeStringify)
-      .use(rehypeSlug)
-      .use(rehypeAutolinkHeadings);
+      .use(rehypeStringify, { allowDangerousHtml: true });
 
     const htmlContent = (await processor.process(content)).toString();
 
@@ -62,9 +59,16 @@ export default async function Page({ params }) {
           <p className="text-sm text-gray-500 mb-4 italic">By {data.author}</p>
           <p className="text-sm text-gray-500 mb-4">{data.date}</p>
         </div>
+        {/* Add required CSS for KaTeX */}
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css"
+          integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn"
+          crossOrigin="anonymous"
+        />
         <div
           dangerouslySetInnerHTML={{ __html: htmlContent }}
-          className="prose dark:prose-invert"
+          className="prose dark:prose-invert max-w-none"
         ></div>
         <OnThisPage htmlContent={htmlContent} />
       </div>
