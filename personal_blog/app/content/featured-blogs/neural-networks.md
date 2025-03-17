@@ -1,10 +1,10 @@
 ---
 title: Neural Networks and how they work
 description: Neural Nets - an exact science
-slug: neural-networks
+slug: ai/neural-networks
 date: 02/03/2025
 author: Hadi
-image: /images/nn-thumbnail.png
+image: /nn-thumbnail.webp
 ---
 
 ## **Neural Networks - Explained Easily**
