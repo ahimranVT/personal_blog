@@ -11,7 +11,7 @@ image: /images/nn-thumbnail.png
 
 ### **What exactly is a Neural Network?**
 
-Put simply, a Neural Network, or an NN for short, is a collection of inter-connected neurons that seeks to replicate the way humans think. As such, it is well suited for tasks such as Pattern Recognition and Natural Language Processing that are typically performed by humans. 
+Put simply, a Neural Network, or an NN for short, is a collection of inter-connected neurons that seeks to replicate the way humans think. As such, it is well suited for tasks such as Pattern Recognition and Natural Language Processing that are typically performed by humans.
 
 A Neural Network typically contains Input, Hidden and Output Layers, with connections existing between the neurons in each layer.
 
